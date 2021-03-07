@@ -1,0 +1,10 @@
+* Build Alpine rootfs for Firecracker
+
+#+begin_src shell
+./download-alpine.sh
+./create-rootfs.sh
+./run.sh
+#+end_src
+
+Notice that you still need a Linux kernel to run the VM, which is not
+provided here.
