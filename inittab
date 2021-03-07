@@ -1,0 +1,20 @@
+# /etc/inittab
+
+::sysinit:/sbin/openrc sysinit
+::sysinit:/sbin/openrc boot
+::sysinit:/sbin/openrc -s sysfs start
+::sysinit:/sbin/openrc -s devfs start
+::sysinit:/sbin/ip link set eth0 up
+::sysinit:/sbin/ip addr add 172.16.0.2/24 dev eth0
+::sysinit:/sbin/ip route add default via 172.16.0.1 dev eth0
+
+::wait:/sbin/openrc default
+
+# Put a getty on the serial port
+ttyS0::respawn:/sbin/getty -L ttyS0 115200 vt100
+
+# Stuff to do for the 3-finger salute
+::ctrlaltdel:/sbin/reboot
+
+# Stuff to do before rebooting
+::shutdown:/sbin/openrc shutdown
