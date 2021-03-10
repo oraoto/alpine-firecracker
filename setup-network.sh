@@ -2,6 +2,7 @@
 
 if [[ -z $1 ]]; then
     echo "Usage: ./setup-network.sh <interface>"
+    exit
 fi
 
 IF=$1
